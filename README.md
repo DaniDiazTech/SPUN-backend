@@ -9,6 +9,16 @@ git clone git@github.com:DaniDiazTech/SPUN-backend.git
 cd SPUN-backnd
 ```
 
+## Run the project
+
+To run the project be sure to first have installed [NodeJS](https://nodejs.org/en/download/current).
+
+Then run:
+
+```bash
+npm run dev
+```
+
 ## Packages
 
 This project uses TypeScript and runs over nodeJS.
@@ -37,7 +47,6 @@ Project structure:
 ├── README.md
 └── tsconfig.json
 ```
-
 
 Style:
 
