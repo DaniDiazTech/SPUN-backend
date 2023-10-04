@@ -1,0 +1,24 @@
+{
+  "name": "spun-backend-ds",
+  "version": "1.0.0",
+  "description": "Backend implementation made for SPUN. The project that let's you practice for the admition test of the National University of Colombia.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+
+    "start": "node .build/index.js",
+    "dev": "ts-node-dev src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.18",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
