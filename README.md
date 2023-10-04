@@ -33,18 +33,20 @@ Project structure:
 ```bash
 .
 ├── data-structures
-├── node_modules
-│   └── typescript
-│       ├── bin
-│       ├── lib
-│       ├── LICENSE.txt
-│       ├── package.json
-│       ├── README.md
-│       ├── SECURITY.md
-│       └── ThirdPartyNoticeText.txt
 ├── package.json
 ├── package-lock.json
 ├── README.md
+├── src
+│   ├── configs
+│   ├── controllers
+│   ├── index.ts
+│   ├── middleware
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── types.d.ts
+│   └── utils
+├── test
 └── tsconfig.json
 ```
 
