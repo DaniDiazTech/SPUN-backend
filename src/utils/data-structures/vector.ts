@@ -1,4 +1,4 @@
-class vector<T> {
+export class vector<T> {
     private capacity: number;
     private topIndex: number;
     private data: T[];

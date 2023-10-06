@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
-
     "start": "node .build/index.js",
     "dev": "ts-node-dev src/index.ts"
   },
@@ -19,6 +18,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "express": "4.18.2"
+    "express": "^4.18.2"
   }
 }
