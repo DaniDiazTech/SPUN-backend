@@ -5,30 +5,30 @@
 type Component = "math" | "natural sciences" | "social sciences" | "text analysis" | "image analysis";
 
 interface Base{
-    id: int,
-};
+    id: number;
+}
 
 interface Exam extends Base{
     is_simulacrum: boolean,
     component: Component,
-};
+}
 
 interface ExamQuestions extends Base{
-    question_id: int;
-};
+    question_id: number;
+}
 
 interface ExamTake extends Base{
-    exam_id: int,
+    exam_id: number,
 
     title: string,
     description: string,
-    score: int,
+    score: number,
     // string at the moment
     answers: string,
     created_at: Date,
     finished_at: Date,
-    timer: int
-};
+    timer: number
+}
 
 interface User extends Base{
     first_name: string,
@@ -40,25 +40,25 @@ interface User extends Base{
     is_superuser: boolean,
     is_editor:boolean,
     is_student: boolean,
-};
+}
 
 interface QuestionBlock extends Base{
-    question_id: int,
+    question_id: number,
     content: string,
-};
+}
 
 interface Question extends Base{
-    question_id: int,
+    question_id: number,
     text: string,
-    answer: int,
-};
+    answer: number,
+}
 interface Choices extends Base{
-    question_id: int,
-    choice_id: int,
+    question_id: number,
+    choice_id: number,
 
     text: string,
 }
 
 
 // Exports
-export {Exam, ExamQuestions, User, ExamTake, QuestionBlock, Question, Choices};
+export {Exam, ExamQuestions, User, ExamTake, QuestionBlock, Question, Choices, Component};
