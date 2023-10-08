@@ -1,13 +1,8 @@
-import { Vector } from "./utils/data-structures/Vector";
-import { LinkedList } from "./utils/data-structures/LinkedList";
-import { Component } from './types';
-import { Queue } from "./utils/data-structures/Queue";
+import { Vector } from "~/utils/data-structures/Vector";
+import { LinkedList } from "~/utils/data-structures/LinkedList";
+import { Component } from '~/types';
+import { Queue } from "~/utils/data-structures/Queue";
 
-function start() {
-    ClassifyTest();
-    //eliminateTest();
-    //createExam();
-}
 
 function ClassifyTest() {
     const cantTest = 1000000;
@@ -224,6 +219,13 @@ function createExam(){
             queueImg.dequeue();
         }        
     //}
+}
+
+
+function start() {
+    ClassifyTest();
+    eliminateTest();
+    createExam();
 }
 
 start();
