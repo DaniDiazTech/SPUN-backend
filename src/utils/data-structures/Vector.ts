@@ -92,4 +92,20 @@ export class Vector<T> {
         }
         this.topIndex--;
     }
+
+    erase(i: number): void {
+        /*
+            Removes the element at the specified index.
+            Time complexity: O(n).
+        */
+
+        if (i < 0 || i >= this.size()) {
+            throw new Error("Index out of bounds.");
+        }
+        for (let j = i; j < this.size() - 1; j++) {
+            this.data[j] = this.data[j + 1];
+        }
+        this.topIndex--;
+    }
+
 }
