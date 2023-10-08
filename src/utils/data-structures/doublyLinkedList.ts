@@ -135,7 +135,7 @@ class DoublyLinkedList<T>{
             throw new Error("Can't access empty LinkedList");
         }
 
-        return this.head!.getElement();
+        return this.tail!.getElement();
     }
     
 }
