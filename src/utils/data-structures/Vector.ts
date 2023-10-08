@@ -107,4 +107,13 @@ export class Vector<T> {
         }
         this.topIndex--;
     }
+
+    findObject(objectToFind: T): boolean {
+        for (let i = 0; i < this.size(); i++) {
+            if (this.data[i] === objectToFind){
+                return true;
+            }
+        }
+        return false;
+    }
 }

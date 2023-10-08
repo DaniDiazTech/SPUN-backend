@@ -131,4 +131,47 @@ export class LinkedList<T>{
         }
         return this.getLast()!.getElement();
     }
+
+    deleteNodeAtPosition(position: number): void {
+        if (!this.head) {
+            return;
+        }
+
+        if (position === 0) {
+            this.head = this.head.next;
+            return;
+        }
+
+        let current = this.head;
+        let prev = null;
+        let index = 0;
+
+        while (current && index < position) {
+            prev = current;
+            current = current.next!;
+            index++;
+        }
+
+        if (current) {
+            if (prev) {
+                prev.next = current.next;
+            }
+        }
+    }
+
+    getValueAtPosition(position: number): T | null {
+        if (!this.head || position < 0) {
+            return null;
+        }
+
+        let current: LinkedListNode<T> | null = this.head;
+        let index = 0;
+
+        while (current && index < position) {
+            current = current.next;
+            index++;
+        }
+
+        return current && current.getElement();
+    }
 }
