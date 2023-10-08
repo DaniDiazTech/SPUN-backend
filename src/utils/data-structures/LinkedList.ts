@@ -40,7 +40,7 @@ class LinkedListNode<T>{
 
 
 // Let T be a general type
-class LinkedList<T>{
+export class LinkedList<T>{
     private head : null | LinkedListNode<T>;
     private _size;
 
