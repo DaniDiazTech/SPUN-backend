@@ -1,4 +1,5 @@
-class queue<T> {
+class Queue<T> {
+
     private frontIndex: number;
     private rearIndex: number;
     private capacity: number;

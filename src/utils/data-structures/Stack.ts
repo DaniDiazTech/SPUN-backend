@@ -1,4 +1,4 @@
-class stack<T> {
+class Stack<T> {
     private topIndex: number;
     private capacity: number;
     private data: T[];
