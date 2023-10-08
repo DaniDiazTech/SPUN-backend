@@ -1,49 +1,158 @@
-import { vector } from "./utils/data-structures/vector";
+import { Vector } from "./utils/data-structures/Vector";
 import { Component } from './types';
+import { Queue } from "./utils/data-structures/Queue";
 
-// Función para generar una letra aleatoria entre M, N, S, T e I
-function generarLetraAleatoria(): string {
+function start() {
+    ClassifyTestVector();
+    eliminateTestVector();
+    ClassifyTestLinkedList();
+    eliminateLinkedList();
+    ClassifyAndEliminate();
+}
+function ClassifyTestVector() {
+    const cantTest = 100000000;
+    const myVectorBank = new Vector<Component>();
+    const myVectorOfComponent = new Vector<Component>();
+    myVectorOfComponent.push_back("math");
+    myVectorOfComponent.push_back("natural sciences");
+    myVectorOfComponent.push_back("social sciences");
+    myVectorOfComponent.push_back("text analysis");
+    myVectorOfComponent.push_back("image analysis");
+    //create xNumber of questions
+    console.time();
+    for (let i = 0; i < cantTest; i++) {
+        const randomIndex = Math.floor(Math.random() * myVectorOfComponent.size());
+        const randomComponent = myVectorOfComponent.at(randomIndex);
+        myVectorBank.push_back(randomComponent);
+    }
+    console.log("time for "+cantTest+" data creation")
+    console.timeEnd();
+    //console.log("Vector de Componentes aleatorios:");
+    //console.log(myVectorC);
+    const queueMath = new Queue<Component>();
+    const queueNatSci = new Queue<Component>();
+    const queueText = new Queue<Component>();
+    const queueSocSci = new Queue<Component>();
+    const queueImg = new Queue<Component>();
 
-    const myVector = new vector<string>();
-    myVector.push_back('M');
-    myVector.push_back('N');
-    myVector.push_back('S');
-    myVector.push_back('T');
-    myVector.push_back('I');
-    const indiceAleatorio = Math.floor(Math.random() * myVector.size());
-    return myVector.at(indiceAleatorio);
+    // classify by components all the questions 
+    console.time();
+    for(let i = 0; i < cantTest; i++) {
+        let question = myVectorBank.at(i);
+        switch (question) {
+            case "math":
+                    queueMath.enqueue(question);
+                break;
+            case "natural sciences":
+                    queueNatSci.enqueue(question);
+                break;
+            case "social sciences":
+                    queueSocSci.enqueue(question);
+                break;
+            case "text analysis":
+                    queueText.enqueue(question);
+                break;
+            case "image analysis":
+                    queueImg.enqueue(question);
+                break;
+            default:
+                console.log("Not valid");
+        }
+    }
+    console.log("time for "+cantTest+" data classification")
+    console.timeEnd();
 }
 
-// Función principal que utiliza la función anterior y almacena los números en un vector
-function Test() {
-    const cantidadNumeros = 10000; // Puedes cambiar esto según cuántos números quieras generar
-    const myVector = new vector<string>();
-
-    for (let i = 0; i < cantidadNumeros; i++) {
-        const numeroAleatorio = generarLetraAleatoria();
-        myVector.push_back(numeroAleatorio);
+function eliminateTestVector() {
+    const cantTest = 100;
+    const myVectorBank = new Vector<String>();
+    //create xNumber of questions
+    for (let i = 0; i < cantTest; i++) {
+        myVectorBank.push_back('M');
     }
-
-    console.log("Números aleatorios generados:");
-    console.log(myVector);
-
-    const componentes: Component[] = ["math", "natural sciences", "social sciences", "text analysis", "image analysis"];
-    const vectorAleatorio: Component[] = [];
-
-    for (let i = 0; i < 10000; i++) {
-        const indiceAleatorio = Math.floor(Math.random() * componentes.length);
-        const componenteAleatorio = componentes[indiceAleatorio];
-        vectorAleatorio.push(componenteAleatorio);
+    console.time();
+    for(let i = 0; i <cantTest; i++) {
+        const randomIndex = Math.floor(Math.random() * myVectorBank.size());
+        myVectorBank.erase(randomIndex);
+        myVectorBank.push_back("M");
     }
-    console.log("Vector de Componentes aleatorios:");
-    console.log(vectorAleatorio);
+    console.log("time for "+cantTest+" data elimination")
+    console.timeEnd();
+}
 
+function eliminateLinkedList() {
+    const cantTest = 100000000;
+    
+    for(let i = 0; i <cantTest; i++) {
+        //queueImg.enqueue("image analysis");
+    }
+    for(let i = 0; i <cantTest; i++) {
+        //const randomIndex = Math.floor(Math.random() * queueImg.size());
+        //  Toca que el indexrandom sea eliminado myVectorBank.eliminate(randomIndex);
+        //para irla llenando siempre
+        // linkedList.push_back("math");
+    }
+}
+
+function ClassifyTestLinkedList(){
+    const cantTest = 100000000;
 
 }
 
-// Llama a la función principal
-Test();
+function ClassifyAndEliminate(){
+    const cantTest = 100000000;
+    const myVectorBank = new Vector<Component>();
+    const myVectorOfComponent = new Vector<Component>();
+    myVectorOfComponent.push_back("math");
+    myVectorOfComponent.push_back("natural sciences");
+    myVectorOfComponent.push_back("social sciences");
+    myVectorOfComponent.push_back("text analysis");
+    myVectorOfComponent.push_back("image analysis");
+    //create xNumber of questions
+    console.time();
+    for (let i = 0; i < cantTest; i++) {
+        const randomIndex = Math.floor(Math.random() * myVectorOfComponent.size());
+        const randomComponent = myVectorOfComponent.at(randomIndex);
+        myVectorBank.push_back(randomComponent);
+    }
+    console.log("time for "+cantTest+" data creation")
+    console.timeEnd();
+    //console.log("Vector de Componentes aleatorios:");
+    //console.log(myVectorC);
+    //crear es LinkedList
+    const queueMath = new Queue<Component>();
+    const queueNatSci = new Queue<Component>();
+    const queueText = new Queue<Component>();
+    const queueSocSci = new Queue<Component>();
+    const queueImg = new Queue<Component>();
 
+    // classify by components all the questions 
+    console.time();
+    for(let i = 0; i < cantTest; i++) {
+        let question = myVectorBank.at(i);
+        switch (question) {
+            case "math":
+                    queueMath.enqueue(question);
+                break;
+            case "natural sciences":
+                    queueNatSci.enqueue(question);
+                break;
+            case "social sciences":
+                    queueSocSci.enqueue(question);
+                break;
+            case "text analysis":
+                    queueText.enqueue(question);
+                break;
+            case "image analysis":
+                    queueImg.enqueue(question);
+                break;
+            default:
+                console.log("Not valid");
+        }
+    }
+    console.log("time for "+cantTest+" data classification")
+    console.timeEnd();
 
+}
 
-
+start();

@@ -1,4 +1,4 @@
-class queue<T> {
+export class Queue<T> {
     private frontIndex: number;
     private rearIndex: number;
     private capacity: number;

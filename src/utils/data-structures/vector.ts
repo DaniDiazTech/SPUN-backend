@@ -1,4 +1,4 @@
-export class vector<T> {
+export class Vector<T> {
     private capacity: number;
     private topIndex: number;
     private data: T[];
@@ -89,6 +89,21 @@ export class vector<T> {
 
         if (this.empty()) {
             throw new Error("The vector is empty.");
+        }
+        this.topIndex--;
+    }
+
+    erase(i: number): void {
+        /*
+            Removes the element at the specified index.
+            Time complexity: O(n).
+        */
+
+        if (i < 0 || i >= this.size()) {
+            throw new Error("Index out of bounds.");
+        }
+        for (let j = i; j < this.size() - 1; j++) {
+            this.data[j] = this.data[j + 1];
         }
         this.topIndex--;
     }

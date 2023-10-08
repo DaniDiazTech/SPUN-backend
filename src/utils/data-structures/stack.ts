@@ -1,4 +1,4 @@
-class stack<T> {
+export class Stack<T> {
     private topIndex: number;
     private capacity: number;
     private data: T[];
