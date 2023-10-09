@@ -1,4 +1,4 @@
-import { CLI } from "../api/src/utils/data-structures/CLI";
+import { CLI } from "./CLI";
 
 // Driver
 let cli = new CLI();
