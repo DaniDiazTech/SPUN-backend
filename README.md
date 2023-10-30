@@ -16,6 +16,7 @@ To run the project be sure to first have installed [NodeJS](https://nodejs.org/e
 Then run:
 
 ```bash
+npm install
 npm run dev
 ```
 
