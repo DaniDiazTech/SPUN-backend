@@ -1,12 +1,9 @@
-const dotenv = require("dotenv");
+import dotenv from 'dotenv'; 
 dotenv.config();
-export {};
-
-const express = require("express");
-const mongoose = require("mongoose");
-const appRoutes = require("./routes/routes");
-
-// Constansts
+// export {};
+import express from 'express';
+import mongoose from 'mongoose';
+import authRouter from './routes/auth/auth';
 
 // Define it in PORT
 const PORT = process.env.PORT;
@@ -17,7 +14,7 @@ const app = express();
 // Middleware
 
 app.use(express.json()); // middleware that converts req.body to json
-app.use("/api/", appRoutes);
+app.use("/api/auth", authRouter);
 
 // First route
 mongoose
