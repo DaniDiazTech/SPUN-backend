@@ -16,6 +16,7 @@ To run the project be sure to first have installed [NodeJS](https://nodejs.org/e
 Then run:
 
 ```bash
+npm install
 npm run dev
 ```
 
@@ -49,6 +50,13 @@ Project structure:
 ├── test
 └── tsconfig.json
 ```
+
+- configs: Configuration files of the src directory. Defines constants.
+- CLI: Console applications made for the app development.
+- Controllers: Manage the logic of models (request and response)
+- Middleware:
+- Models: Models of the mongoDB database
+- Routes: API interface, uses controllers.
 
 Style:
 

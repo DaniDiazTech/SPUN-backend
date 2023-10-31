@@ -1,6 +1,6 @@
-import { Question } from "./models/Question";
-import { Question as QuestionType} from "./types";
-import { Vector } from "./utils/data-structures/Vector";
+import { Question } from "../models/Question";
+import { Question as QuestionType} from "../types";
+import { Vector } from "../utils/data-structures/Vector";
 
 const mongoose = require("mongoose");
 mongoose.connect('mongodb://localhost/spun', { useNewUrlParser: true, useUnifiedTopology: true });

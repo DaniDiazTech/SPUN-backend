@@ -1,20 +1,32 @@
+import dotenv from 'dotenv'; 
+dotenv.config();
+// export {};
 import express from 'express';
+import mongoose from 'mongoose';
+import authRouter from './routes/auth/auth';
+
+// Define it in PORT
+const PORT = process.env.PORT;
+
 // Stores all the routes of the app
-
-
 const app = express();
 
+// Middleware
+
 app.use(express.json()); // middleware that converts req.body to json
-
-const PORT = 3000;
-
+app.use("/api/auth", authRouter);
 
 // First route
-app.get('/ping', (_req, res) => {
-    console.log('someone pinged here');
-    res.send('pong');
-});
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    // Only listen when we're connected to the database
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+    // Listen for requests
+    app.listen(PORT, () => {
+      console.log("Connected to DB and listening on port", PORT);
+    });
+  })
+  .catch((error: Error) => {
+    console.log(error);
+  });
