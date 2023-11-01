@@ -1,32 +1,26 @@
-import dotenv from 'dotenv'; 
-dotenv.config();
-// export {};
-import express from 'express';
-import mongoose from 'mongoose';
-import authRouter from './routes/auth/auth';
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
+import express from "express";
 
-// Define it in PORT
-const PORT = process.env.PORT;
+import connectDB from "./db";
+
+import authRouter from "./routes/auth/auth";
+import questionsCrudRouter from "./routes/questions/questionsCrud";
+
+// Loads the environment variables from .env
+dotenv.config();
 
 // Stores all the routes of the app
 const app = express();
 
-// Middleware
+// Middlewares
+app.use(cookieParser()); // For parsing cookies
+app.use(express.json()); // Converts req.body to json
+app.use("/api/auth", authRouter); // Authentication routes
+app.use("/api/crud", questionsCrudRouter); // Questions crud routes
 
-app.use(express.json()); // middleware that converts req.body to json
-app.use("/api/auth", authRouter);
-
-// First route
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    // Only listen when we're connected to the database
-
-    // Listen for requests
-    app.listen(PORT, () => {
-      console.log("Connected to DB and listening on port", PORT);
-    });
-  })
-  .catch((error: Error) => {
-    console.log(error);
-  });
+// Runs the server
+app.listen(process.env.PORT, () => {
+  connectDB();
+  console.log("Connected to DB and listening on port", process.env.PORT);
+});
