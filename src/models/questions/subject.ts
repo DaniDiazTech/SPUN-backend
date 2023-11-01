@@ -12,8 +12,4 @@ const subjectSchema = new Schema(
   }
 );
 
-const subjectModel = model("Subject", subjectSchema);
-
-module.exports = {
-  subjectModel,
-};
+export default model("Subject", subjectSchema);

@@ -33,8 +33,4 @@ const questionBlockSchema = new Schema(
   }
 );
 
-const questionBlockModel = model("QuestionBlock", questionBlockSchema);
-
-module.exports = {
-  questionBlockModel,
-};
+export default model("QuestionBlock", questionBlockSchema);

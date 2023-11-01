@@ -1,14 +1,16 @@
 import bcrypt from "bcrypt";
-import { createAccessToken } from "../../utils/auth/accessToken";
-import userModel from "../../models/users/user";
+
+import createAccessToken from "../../utils/auth/accessToken";
+import User from "../../models/users/user";
 
 export const register = async (req, res) => {
   const { firstName, lastName, username, email, password, isAdmin } = req.body;
 
   try {
+    // Encrypts the password
     const passwordHash = await bcrypt.hash(password, 10);
 
-    const newUser = new userModel({
+    const newUser = new User({
       firstName,
       lastName,
       username,
@@ -25,12 +27,8 @@ export const register = async (req, res) => {
       id: savedUser._id,
       username: savedUser.username,
       email: savedUser.email,
-      isAdmin: isAdmin,
-      createdAt: savedUser.createdAt,
-      updatedAt: savedUser.updatedAt,
     });
-  } catch (err: any) {
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
-
 };
