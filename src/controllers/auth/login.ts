@@ -1,19 +1,19 @@
 import bcrypt from "bcrypt";
-import { createAccessToken } from "../../utils/auth/accessToken";
-import userModel from "../../models/users/user";
+
+import createAccessToken from "../../utils/auth/accessToken";
+import User from "../../models/users/user";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const userFound = await userModel.findOne({ email });
+    const userFound = await User.findOne({ email });
 
+    // Checks if the user exists
     if (userFound) {
       const isMatch = await bcrypt.compare(password, userFound.password);
 
-      /*
-        Verifies user exists   
-      */
+      // Checks if the password matches
       if (isMatch) {
         const token = await createAccessToken({ id: userFound._id });
 
@@ -22,8 +22,6 @@ export const login = async (req, res) => {
           id: userFound._id,
           username: userFound.username,
           email: userFound.email,
-          createdAt: userFound.createdAt,
-          updatedAt: userFound.updatedAt,
         });
       } else {
         res.status(400).json({ message: "Incorrect password" });
@@ -31,7 +29,7 @@ export const login = async (req, res) => {
     } else {
       res.status(400).json({ message: "User not found" });
     }
-  } catch (err: any) {
+  } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
