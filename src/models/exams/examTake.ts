@@ -11,11 +11,19 @@ const examTakeSchema = new Schema(
       ref: "Exam",
       required: true,
     },
-    answers: {
-      type: Schema.Types.ObjectId,
-      ref: "Choice",
-      required: false,
-    },
+    answers: [
+      {
+        question: {
+          type: Schema.Types.ObjectId,
+          ref: "Question",
+          required: true,
+        },
+        selectedOption: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     start_exam: {
       type: Date,
       required: true,
@@ -39,8 +47,4 @@ const examTakeSchema = new Schema(
   }
 );
 
-const examTakeModel = model("ExamTake", examTakeSchema);
-
-module.exports = {
-  examTakeModel,
-};
+export default model("ExamTake", examTakeSchema);

@@ -10,13 +10,13 @@ const examSchema = new Schema(
       type: String,
       required: false,
     },
-    question_blocks: [
+    questionBlocks: [
       {
         type: Schema.Types.ObjectId,
         ref: "QuestionBlock",
       },
     ],
-    is_simulacrum: {
+    isSimulacrum: {
       type: Boolean,
       required: false,
     },
@@ -26,8 +26,4 @@ const examSchema = new Schema(
   }
 );
 
-const examModel = model("Exam", examSchema);
-
-module.exports = {
-  examModel,
-};
+export default model("Exam", examSchema);
