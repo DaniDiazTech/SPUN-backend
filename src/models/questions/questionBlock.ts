@@ -3,15 +3,33 @@ import { Schema, model } from "mongoose";
 const questionBlockSchema = new Schema(
   {
     subject: {
-      type: Schema.Types.ObjectId,
-      ref: "Subject",
+      type: String,
+      enum: [
+        "Matemáticas",
+        "Ciencias Sociales",
+        "Ciencias Naturales",
+        "Análisis textual",
+        "Análisis de imagen",
+      ],
       required: true,
     },
     questions: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Question",
-        required: true,
+        text: {
+          type: String,
+          required: true,
+        },
+        choices: [
+          {
+            type: String,
+            required: true,
+          },
+        ],
+        answer: {
+          type: String,
+          enum: ["1", "2", "3", "4"],
+          required: true,
+        },
       },
     ],
     content: {
@@ -20,11 +38,6 @@ const questionBlockSchema = new Schema(
     },
     image: {
       type: String,
-      required: false,
-    },
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
       required: false,
     },
   },
