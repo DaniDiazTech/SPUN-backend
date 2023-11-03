@@ -24,11 +24,11 @@ const examTakeSchema = new Schema(
         },
       },
     ],
-    start_exam: {
+    startExam: {
       type: Date,
       required: true,
     },
-    end_exam: {
+    endExam: {
       type: Date,
       required: true,
     },
@@ -41,10 +41,18 @@ const examTakeSchema = new Schema(
       type: Number,
       required: false,
     },
+    userChoices: [
+      {
+        type: String,
+        enum: ["1", "2", "3", "4"],
+        required: true,
+      }
+    ]
   },
   {
     timestamps: true,
   }
 );
 
-export default model("ExamTake", examTakeSchema);
+const ExamTake = model("ExamTake", examTakeSchema);
+export default ExamTake;
