@@ -17,7 +17,11 @@ export const login = async (req, res) => {
       if (isMatch) {
         const token = await createAccessToken({ id: userFound._id });
 
-        res.cookie("token", token);
+        res.cookie("token", token, {
+          httpOnly: false,
+          secure: true,
+          sameSite: "none",
+        });
         res.status(200).json({
           id: userFound._id,
           username: userFound.username,
