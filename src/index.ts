@@ -1,10 +1,9 @@
+import authRouter from "./routes/auth/auth";
+import connectDB from "./db";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import cors from "cors";
-import connectDB from "./db";
-
-import authRouter from "./routes/auth/auth";
 import questionsCrudRouter from "./routes/questions/questionsCrud";
 import examRouter from "./routes/exams/exams";
 
@@ -15,6 +14,13 @@ dotenv.config();
 const app = express();
 
 // Middlewares
+// Allows connection between servers
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 app.use(cookieParser()); // For parsing cookies
 app.use(express.json()); // Converts req.body to json
 app.use(cors()); // Uses cross-origin resource sharing
