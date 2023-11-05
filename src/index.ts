@@ -23,7 +23,6 @@ app.use(
 );
 app.use(cookieParser()); // For parsing cookies
 app.use(express.json()); // Converts req.body to json
-app.use(cors()); // Uses cross-origin resource sharing
 app.use("/api/auth", authRouter); // Authentication routes
 app.use("/api/crud", questionsCrudRouter); // Questions crud routes
 app.use("/api/exam", examRouter);
