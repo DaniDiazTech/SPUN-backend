@@ -2,10 +2,6 @@ import { Schema, model } from "mongoose";
 
 const examTakeSchema = new Schema(
   {
-    title: {
-      type: String,
-      required: false,
-    },
     exam: {
       type: Schema.Types.ObjectId,
       ref: "Exam",
@@ -24,11 +20,11 @@ const examTakeSchema = new Schema(
         },
       },
     ],
-    start_exam: {
+    startExam: {
       type: Date,
       required: true,
     },
-    end_exam: {
+    endExam: {
       type: Date,
       required: true,
     },
