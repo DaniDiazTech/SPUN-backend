@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
 const examTakeSchema = new Schema(
   {
@@ -9,15 +10,8 @@ const examTakeSchema = new Schema(
     },
     answers: [
       {
-        question: {
-          type: Schema.Types.ObjectId,
-          ref: "Question",
-          required: true,
-        },
-        selectedOption: {
-          type: String,
-          required: true,
-        },
+        type:String,
+        required: true,
       },
     ],
     startExam: {
@@ -37,13 +31,6 @@ const examTakeSchema = new Schema(
       type: Number,
       required: false,
     },
-    userChoices: [
-      {
-        type: String,
-        enum: ["1", "2", "3", "4"],
-        required: true,
-      }
-    ]
   },
   {
     timestamps: true,
