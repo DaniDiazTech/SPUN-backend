@@ -16,6 +16,17 @@ const examSchema = new Schema(
         ref: "QuestionBlock",
       },
     ],
+    subject: {
+      type: String,
+      enum: [
+        "Matemáticas",
+        "Ciencias Sociales",
+        "Ciencias Naturales",
+        "Análisis textual",
+        "Análisis de imagen",
+      ],
+      required: false,
+    },
     isSimulacrum: {
       type: Boolean,
       required: false,
