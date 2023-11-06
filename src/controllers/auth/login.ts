@@ -28,10 +28,10 @@ export const login = async (req, res) => {
           email: userFound.email,
         });
       } else {
-        res.status(400).json({ message: "Incorrect password" });
+        res.status(400).json(["Contraseña incorrecta"]);
       }
     } else {
-      res.status(400).json({ message: "User not found" });
+      res.status(400).json(["Usuario no encontrado"]);
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
