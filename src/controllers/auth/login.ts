@@ -1,13 +1,24 @@
 import bcrypt from "bcrypt";
 
+import { ExtractValueFunction, UserInterface } from "../../types";
+import { BSTTree } from "../../utils/data-structures/BSTTree";
 import createAccessToken from "../../utils/auth/accessToken";
 import User from "../../models/users/user";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
+  const extractEmail: ExtractValueFunction<UserInterface> = (a) => a.email;
+
+  let usersTree: BSTTree<UserInterface> = new BSTTree<UserInterface>(extractEmail);
+
   try {
-    const userFound = await User.findOne({ email });
+    const allUsers = await User.find();
+    allUsers.forEach((user) => {
+      usersTree.insertBST(user);
+    })
+    
+    const userFound = usersTree.findBST(email, extractEmail)
 
     // Checks if the user exists
     if (userFound) {
