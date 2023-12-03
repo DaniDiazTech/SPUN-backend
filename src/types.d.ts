@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 // Types
 type Subject =
   | "Matemáticas"
@@ -7,6 +9,17 @@ type Subject =
   | "Análisis textual";
 
 // Database models interfaces
+interface UserInterface extends Document {
+  firstName?: string;
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  username: string;
+  password: string;
+  isAdmin: boolean;
+}
 
+// Compare functions
+type ExtractValueFunction<T> = (a: T) => string | number;
 
-export { Subject };
+export { Subject, ExtractValueFunction, UserInterface };
