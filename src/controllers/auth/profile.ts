@@ -8,7 +8,7 @@ export const profile = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const exams = await ExamTake.find({ user: id }).populate('exam');
+    const exams = await ExamTake.find({ user: id }).sort('-createdAt').populate('exam');
 
     res.status(200).json({
       createdAt: user.createdAt,
