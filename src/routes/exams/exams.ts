@@ -8,7 +8,7 @@ const examRouter = Router();
 
 examRouter.get("/", getExams)
 examRouter.get("/:id", getExam);
-examRouter.get("/take/:id", getExamTakes)
 examRouter.post("/take/:id", postExamTake);
+examRouter.get("/user/:id", getExamTakes)
 
 export default examRouter;

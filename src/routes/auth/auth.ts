@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { login, logout, register, verify } from "./../../controllers/auth";
+import { login, logout, register, verify, profile } from "./../../controllers/auth";
 import { loginSchema, registerSchema } from "../../schemas/auth.schema";
 import { validateSchema } from "../../middlewares/validateSchema";
 
@@ -13,5 +13,7 @@ router.post("/login", validateSchema(loginSchema), login);
 router.post("/logout", logout);
 
 router.get("/verify", verify);
+
+router.get("/profile/:id", profile);
 
 export default router;
