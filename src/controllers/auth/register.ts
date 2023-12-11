@@ -1,26 +1,14 @@
 import bcrypt from "bcrypt";
 
-import { ExtractValueFunction, UserInterface } from "../../types";
-import { BSTTree } from "../../utils/data-structures/BSTTree";
 import createAccessToken from "../../utils/auth/accessToken";
 import User from "../../models/users/user";
 
 export const register = async (req, res) => {
   const { firstName, lastName, username, email, password, isAdmin } = req.body;
 
-  const extractEmail: ExtractValueFunction<UserInterface> = (a) => a.email;
-  const extractUsername: ExtractValueFunction<UserInterface> = (a) => a.username;
-
-  let usersTree: BSTTree<UserInterface> = new BSTTree<UserInterface>(extractEmail);
-
   try {
-    const allUsers = await User.find();
-    allUsers.forEach((user) => {
-      usersTree.insertBST(user);
-    })
-
-    const userFoundByEmail = usersTree.findBST(email, extractEmail);
-    const userFoundByUsername = usersTree.findBST(username, extractUsername);
+    const userFoundByEmail = await User.findOne({ email });
+    const userFoundByUsername = await User.findOne({ username });
 
     if (userFoundByEmail) {
       return res.status(400).json(["El correo ya está en uso"]);
