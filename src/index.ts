@@ -4,7 +4,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import questionsCrudRouter from "./routes/questions/questionsCrud";
 import examRouter from "./routes/exams/exams";
 
 // Loads the environment variables from .env
@@ -24,7 +23,6 @@ app.use(
 app.use(cookieParser()); // For parsing cookies
 app.use(express.json()); // Converts req.body to json
 app.use("/api/auth", authRouter); // Authentication routes
-app.use("/api/crud", questionsCrudRouter); // Questions crud routes
 app.use("/api/exam", examRouter);
 
 // Runs the server
