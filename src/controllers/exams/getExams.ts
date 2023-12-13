@@ -1,22 +1,23 @@
-import exam from "../../models/exams/exam";
+import { Request, Response } from "express";
+import getExamsService from "../../services/exams/getall.service";
 
 /**
  * @param req
  * @param res
  * @returns Json with all exams to take
  */
-const getExams = async (req, res) => {
+const getExams = async (req: Request, res: Response) => {
 
   try {
-    const Exams = await exam.find({});
+    const Exams = await getExamsService();
 
     res.status(200).json({
       exams: Exams,
     });
     
-  } catch (error) {
-    return res.status(500).json({
-      error: error,
+  } catch (err) {
+    return res.status(err.status).json({
+      error: err.message,
     });
   }
 };

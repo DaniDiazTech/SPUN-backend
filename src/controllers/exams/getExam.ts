@@ -25,14 +25,13 @@ const getExam = async (req, res) => {
   }
 
   try {
-    const Exam = await exam.findById(id);
+    const Exam = await exam.findById(id).populate("questionBlocks").exec();
 
     if (!Exam) {
       return res.status(404).json({
         error: "No such exam",
       });
     }
-    await Exam.populate("questionBlocks");
 
     res.status(200).json({
       exam: Exam,
