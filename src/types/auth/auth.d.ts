@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
 // Database models interfaces
 export interface UserInterface extends Document {
@@ -27,4 +27,11 @@ export interface UserLoginInterface{
 
 export interface DecodedTokenInterface{
     id: string;
+}
+
+export interface AuthSuccessInterface{
+    token: string;
+    id: mongoose.Types.ObjectId;
+    username: string;
+    email: string;
 }

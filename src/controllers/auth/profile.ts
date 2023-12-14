@@ -1,8 +1,7 @@
-import User from "../../models/users/user";
-import ExamTake from "../../models/exams/examTake";
 import { profileService } from "../../services/auth/profile.service";
+import { Request, Response } from "express";
 
-export const profile = async (req, res) => {
+export const profile = async (req: Request, res: Response) => {
   try {
     const data = await profileService(req.params.id);
     res.status(200).json(data);

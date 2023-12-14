@@ -1,6 +1,7 @@
 import { loginService } from "../../services/auth/login.service";
+import { Request, Response } from "express";
 
-export const login = async (req, res) => {
+export const login = async (req: Request, res: Response) => {
   try {
     const data= await loginService(req.body);
     const token = data.token;
