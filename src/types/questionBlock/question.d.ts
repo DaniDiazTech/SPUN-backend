@@ -1,12 +1,7 @@
-import { Document } from "mongoose";
 
-export interface QuestionInterface extends Document{
+export interface QuestionInterface{
     text: string;
     choices: string[];
-    answer: {
-      type: string;
-      enum: ["1", "2", "3", "4"];
-      required: true;
-    };
+    answer: string;
   }
   

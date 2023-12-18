@@ -4,4 +4,12 @@ import { logout } from "./auth/logout";
 import { register } from "./auth/register";
 import { verify } from "./auth/verify";
 
-export { login, logout, register, verify, profile };
+const authController = {
+    login,
+    logout,
+    register,
+    verify,
+    profile,
+};
+
+export default authController;
