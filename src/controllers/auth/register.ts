@@ -1,48 +1,23 @@
-import bcrypt from "bcrypt";
+import { Request, Response } from "express";
+import { registerService } from "../../services/auth/register.service";
 
-import createAccessToken from "../../utils/auth/accessToken";
-import User from "../../models/users/user";
 
-export const register = async (req, res) => {
-  const { firstName, lastName, username, email, password, isAdmin } = req.body;
-
+export const register = async (req:Request, res:Response) => {
   try {
-    const userFoundByEmail = await User.findOne({ email });
-    const userFoundByUsername = await User.findOne({ username });
-
-    if (userFoundByEmail) {
-      return res.status(400).json(["El correo ya está en uso"]);
-    }
-    if (userFoundByUsername) {
-      return res.status(400).json(["El username ya está en uso"]);
-    }
-
-    // Encrypts the password
-    const passwordHash = await bcrypt.hash(password, 10);
-
-    const newUser = new User({
-      firstName,
-      lastName,
-      username,
-      email,
-      password: passwordHash,
-      isAdmin,
-    });
-
-    const savedUser = await newUser.save();
-    const token = await createAccessToken({ id: savedUser._id });
-
+    const data= await registerService(req.body);
+    const token = data.token;
     res.cookie("token", token, {
       httpOnly: false,
       secure: true,
       sameSite: "none",
     });
     res.json({
-      id: savedUser._id,
-      username: savedUser.username,
-      email: savedUser.email,
+      id: data.id,
+      username: data.username,
+      email: data.email,
     });
+
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(err.status).json({ message: err.message });
   }
 };

@@ -1,22 +1,11 @@
-import User from "../../models/users/user";
-import ExamTake from "../../models/exams/examTake";
+import { profileService } from "../../services/auth/profile.service";
+import { Request, Response } from "express";
 
-export const profile = async (req, res) => {
-  const { id } = req.params;
+export const profile = async (req: Request, res: Response) => {
   try {
-    const user = await User.findOne({ _id: id });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    const exams = await ExamTake.find({ user: id }).sort('-createdAt').populate('exam');
-
-    res.status(200).json({
-      createdAt: user.createdAt,
-      username: user.username, 
-      exams: exams,
-    });
-
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const data = await profileService(req.params.id);
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(err.status).json({ message: err.message });
   }
 };

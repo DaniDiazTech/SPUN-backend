@@ -1,13 +1,20 @@
-import ExamTake from "../../models/exams/examTake";
+import { Request, Response } from 'express';
+import getExamTakesService from '../../services/exams/getallExamTakes.service';
 
-const getExamTakes = async (req, res) => {
-  const { id } = req.params;
+/**
+ * Get exam takes by user id
+ * @param req Request
+ * @param res Response
+ * @returns all exam takes by user id
+ */
+
+const getExamTakes = async (req:Request, res:Response) => {
   try {
-    const ExamTakes = await ExamTake.find({ user: id }).sort('-createdAt').populate('exam');
+    const ExamTakes = await getExamTakesService(req.params.id);
     res.status(200).json({ examTakes: ExamTakes });
-  } catch (error) {
-    return res.status(500).json({
-      error: error,
+  } catch (err) {
+    res.status(err.status).json({
+      error: err.message,
     });
   }
 };
