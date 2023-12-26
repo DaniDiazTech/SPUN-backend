@@ -1,5 +1,6 @@
 import mongoose, { Document } from "mongoose";
 import { QuestionBlockInterface } from "../questionBlock/questionBlock";
+
 export interface ExamInterface extends Document {
   title: string;
   description: string;
@@ -8,8 +9,6 @@ export interface ExamInterface extends Document {
   isSimulacrum: boolean;
   timestamps?: boolean;
 }
-
-
 
 export interface ExamCreateInterface {
   title: string;

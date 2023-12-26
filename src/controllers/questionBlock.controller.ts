@@ -1,7 +1,8 @@
 import getQuestionsBySubject from "./questionBlock/getQuestionsBySubject";
-
+import getQuestions from "./questionBlock/getQuestions";
 const QuestionBlockController = {
-    getQuestionsBySubject
+    getQuestions,
+    getQuestionsBySubject,
 }
 
 export default QuestionBlockController;
