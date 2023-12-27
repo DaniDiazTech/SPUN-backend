@@ -13,7 +13,12 @@ const getExamTakes = async (req:Request, res:Response) => {
     const ExamTakes = await getExamTakesService(req.params.id);
     res.status(200).json({ examTakes: ExamTakes });
   } catch (err) {
-    res.status(err.status).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        error: err.message,
+      });
+    }
+    return res.status(500).json({
       error: err.message,
     });
   }

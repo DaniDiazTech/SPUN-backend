@@ -3,13 +3,13 @@ import { QuestionBlockInterface, QuestionBlockUpdateInterface } from "../../type
 import { HTTPError } from "../../utils/HTTPError";
 
 const updateQuestionBlockService = async (_id:string, questionBlockUpdate: QuestionBlockUpdateInterface) => {
-    console.log(_id);
     const QuestionBlock= await questionBlock.findOneAndUpdate(
         { _id:_id },
         questionBlockUpdate,
     ).exec();
-    if (!QuestionBlock) throw new HTTPError(404, "Question block not found");
-    return QuestionBlock as QuestionBlockInterface;
+    if (!QuestionBlock) throw new HTTPError(404, "Something went wrong updating the question block");
+    const newQuestionBLock= await questionBlock.findById(_id);
+    return newQuestionBLock as QuestionBlockInterface;
 };
 
 export default updateQuestionBlockService;

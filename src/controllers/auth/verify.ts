@@ -6,6 +6,13 @@ export const verify = async (req, res, next) => {
     const data = await verifyService(token);
     res.json(data);
   }catch (err) {
-    res.status(err.status).json({ message: err.message });
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        err: err.message,
+      });
+    }
+    return res.status(500).json({
+      err: err.message,
+    });
   }
 };

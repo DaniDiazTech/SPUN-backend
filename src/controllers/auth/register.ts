@@ -18,6 +18,13 @@ export const register = async (req:Request, res:Response) => {
     });
 
   } catch (err) {
-    res.status(err.status).json({ message: err.message });
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        err: err.message,
+      });
+    }
+    return res.status(500).json({
+      err: err.message,
+    });
   }
 };

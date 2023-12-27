@@ -8,7 +8,12 @@ const postQuestionBlock = async (req:Request, res:Response) => {
       questionBlock: QuestionBlock,
     });
   } catch (err) {
-    res.status(err.message|500).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        err: err.message,
+      });
+    }
+    res.status(500).json({
       err: err.message,
     });
   }

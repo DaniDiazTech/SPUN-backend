@@ -13,7 +13,12 @@ const postExamTake = async (req:Request, res:Response) => {
       examTake: Exam,
     });
   } catch (err) {
-    res.status(err.status).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        err: err.message,
+      });
+    }
+    return res.status(500).json({
       error: err.message,
     });
   }

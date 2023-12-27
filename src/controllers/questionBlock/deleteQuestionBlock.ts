@@ -18,7 +18,12 @@ const deleteQuestionBlock = async (req: Request, res: Response) => {
     });
     
   } catch (err) {
-    return res.status(err.status).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        error: err.message,
+      });
+    }
+    return res.status(500).json({
       error: err.message,
     });
   }
