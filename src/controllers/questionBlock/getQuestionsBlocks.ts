@@ -6,7 +6,7 @@ import getQuestionsService from "../../services/questionBlock/getAll.service";
  * @param res
  * @returns Json with all questions blocks
  */
-const getQuestions = async (req: Request, res: Response) => {
+const getQuestionBlocks = async (req: Request, res: Response) => {
 
   try {
     const QuestionsBlocks = await getQuestionsService();
@@ -22,4 +22,4 @@ const getQuestions = async (req: Request, res: Response) => {
   }
 };
 
-export default getQuestions;
+export default getQuestionBlocks;

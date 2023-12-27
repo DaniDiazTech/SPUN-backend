@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import getQuestionsBySubjectService from "../../services/questionBlock/getallBySubject.service";
+import getQuestionsBySubjectService from "../../services/questionBlock/getBySubject.service";
 /**
  * @param req
  * @param res

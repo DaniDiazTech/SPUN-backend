@@ -1,11 +1,11 @@
 import questionBlock from "../../models/questions/questionBlock";
-import { HTTPError } from "../../utils/HTTPError";
 import { QuestionBlockInterface } from "../../types/questionBlock/questionBlock";
 
-const getQuestionBlockService = async (_id: string) => {
+const deleteQuestionBlockService = async (_id: string) => {
     const QuestionBlock= await questionBlock.findById(_id);
-    if (!QuestionBlock) throw new HTTPError(404, "Question block not found");
+    const questionBlockDeleted = await questionBlock.findByIdAndDelete(_id);
+    if (!questionBlockDeleted) throw new Error('Error deleting question block');
     return QuestionBlock as QuestionBlockInterface;
 };
 
-export default getQuestionBlockService;
+export default deleteQuestionBlockService;

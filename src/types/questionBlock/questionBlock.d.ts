@@ -8,3 +8,14 @@ export interface QuestionBlockInterface extends Document {
   image: string;
   timestamps?: boolean;
 }
+
+export interface QuestionBlockCreateInterface {
+  subject: string;
+  questions: QuestionInterface[];
+  content: string;
+  image?: string;
+  timestamps?: boolean;
+}
+
+export interface QuestionBlockUpdateInterface extends QuestionBlockCreateInterface {
+}

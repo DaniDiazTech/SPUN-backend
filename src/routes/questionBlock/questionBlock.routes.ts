@@ -3,12 +3,10 @@ import QuestionBlockController from "../../controllers/questionBlock.controller"
 
 const QuestionBlockRouter = Router();
 
-QuestionBlockRouter.get("/", QuestionBlockController.getQuestions)
+QuestionBlockRouter.get("/", QuestionBlockController.getQuestionBlocks);
+QuestionBlockRouter.get("/:id", QuestionBlockController.getQuestionBlock);
 QuestionBlockRouter.get("/:subject", QuestionBlockController.getQuestionsBySubject);
-/*
-QuestionBlockRouter.get("/:id", QuestionBlockController.getQuestionById);
-QuestionBlockRouter.post("/", QuestionBlockController.createQuestion);
-QuestionBlockController.put("/:id", QuestionBlockController.updateQuestion);
-QuestionBlockController.delete("/:id", QuestionBlockController.deleteQuestion);
-*/
+QuestionBlockRouter.post("/create", QuestionBlockController.postQuestionBlock);
+QuestionBlockRouter.put("/update", QuestionBlockController.updateQuestionBlock);
+QuestionBlockRouter.delete("/:id", QuestionBlockController.deleteQuestionBlock);
 export default QuestionBlockRouter;
