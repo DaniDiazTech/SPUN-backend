@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
-import getQuestionsBySubjectService from "../../services/questionBlock/getallBySubject.service";
+import getQuestionsBySubjectService from "../../services/questionBlock/getBySubject.service";
 /**
  * @param req
  * @param res
  * @returns Json with all questions by subject
  */
 const getQuestionsBySubject = async (req: Request, res: Response) => {
-
+  console.log("getQuestionsBySubject.controller");
+  console.log("req.params.subject: ", req.params.subject);
   try {
     const QuestionsBlocks = await getQuestionsBySubjectService(req.params.subject);
 
@@ -15,7 +16,12 @@ const getQuestionsBySubject = async (req: Request, res: Response) => {
     });
     
   } catch (err) {
-    return res.status(err.status).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        error: err.message,
+      });
+    }
+    return res.status(500).json({
       error: err.message,
     });
   }

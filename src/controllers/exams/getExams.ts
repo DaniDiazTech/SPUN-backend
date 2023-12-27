@@ -14,6 +14,11 @@ const getExams = async (req: Request, res: Response) => {
     });
     
   } catch (err) {
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        error: err.message,
+      });
+    }
     return res.status(err.status).json({
       error: err.message,
     });

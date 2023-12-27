@@ -1,18 +1,20 @@
-import mongoose from "mongoose";
 import { Request, Response } from "express";
-import getExamService from "../../services/exams/getExam.service";
+import getQuestionsService from "../../services/questionBlock/getAll.service";
 
 /**
  * @param req
  * @param res
- * @returns Json with exam: Exam info, and questions: questionBlock related to Exam
+ * @returns Json with all questions blocks
  */
-const getExam = async (req:Request, res:Response) => {
+const getQuestionBlocks = async (req: Request, res: Response) => {
+
   try {
-    const Exam = await getExamService(req.params.id);
+    const QuestionsBlocks = await getQuestionsService();
+
     res.status(200).json({
-      exam: Exam,
+        questionsBlocks: QuestionsBlocks,
     });
+    
   } catch (err) {
     if (err.status!==undefined) {
       return res.status(err.status).json({
@@ -25,4 +27,4 @@ const getExam = async (req:Request, res:Response) => {
   }
 };
 
-export default getExam;
+export default getQuestionBlocks;

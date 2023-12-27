@@ -8,7 +8,12 @@ const postExam = async (req:Request, res:Response) => {
       exam: Exam,
     });
   } catch (err) {
-    res.status(err.message|500).json({
+    if (err.status!==undefined) {
+      return res.status(err.status).json({
+        err: err.message,
+      });
+    }
+    return res.status(500).json({
       err: err.message,
     });
   }
