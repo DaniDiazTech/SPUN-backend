@@ -6,11 +6,13 @@ import Alghoritms from "../../utils/Alghoritms";
 
 const getRandomExamService = async (subject:string, n_str:string) => {
     const n=parseInt(n_str, 10);
+    //Select n random questions blocks
     const randomQuestions:QuestionBlockInterface[]=await getQuestionsBySubjectRandomService(subject, n); // get n random questions blocks
     const weights:number[]=[];
+    // get weights for each question block, the weight is the number of questions in the question block
     for (let i=0; i<randomQuestions.length; i++) {
         weights.push(randomQuestions[i].questions.length);
-    }// get weights for each question block, the weight is the number of questions in the question block
+    }
     const goal=n; // the goal is to get n questions
     const selectedQuestions:QuestionBlockInterface[]=await Alghoritms.knapsack(randomQuestions, weights, goal); // get the selected questions
     const examObject={
