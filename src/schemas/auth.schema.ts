@@ -1,6 +1,12 @@
 import { z } from "zod";
 
 export const registerSchema = z.object({
+  firstName: z.string({
+    required_error: "El nombre es requerido",
+  }),
+  lastName: z.string({
+    required_error: "El apellido es requerido",
+  }),
   username: z.string({
     required_error: "El username es requerido",
   }),
@@ -18,6 +24,7 @@ export const registerSchema = z.object({
     .min(6, {
       message: "La contraseña debe tener al menos 6 caracteres",
     }),
+  isAdmin: z.boolean(),
 });
 
 export const loginSchema = z.object({
@@ -30,5 +37,7 @@ export const loginSchema = z.object({
     }),
   password: z.string({
     required_error: "La contraseña es requerida",
+  }).min(6, {
+    message: "La contraseña debe tener al menos 6 caracteres",
   }),
 });
