@@ -13,7 +13,6 @@ const deleteQuestionBlock = async (req: Request, res: Response) => {
     const QuestionBlock = await deleteQuestionBlockService(req.params.id);
 
     res.status(200).json({
-        message: "Question block deleted successfully",
         questionBlock: QuestionBlock,
     });
     

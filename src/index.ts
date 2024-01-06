@@ -5,11 +5,12 @@ import dotenv from "dotenv";
 import express from "express";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
+import { swaggerOptions } from "./swagger/swagger";
 import router_manager from "./routes/manager.routes";
 
 // Loads the environment variables from .env
 dotenv.config();
-
+/*
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
@@ -23,10 +24,32 @@ const swaggerOptions = {
         url: "http://localhost:4000",
       },
     ],
+    tags: [
+      {
+        name: "auth",
+        description: "Authentication routes",
+      },
+      {
+        name: "questionBlock",
+        description: "Question block routes",
+      },
+      {
+        name: "question",
+        description: "Question routes",
+      },
+      {
+        name: "subject",
+        description: "Subject routes",
+      },
+      {
+        name: "user",
+        description: "User routes",
+      },
+    ],
   },
-  apis: ["./src/routes/**/*.ts"],
+  apis: 
 }
-
+*/
 // Stores all the routes of the app
 const app = express();
 
