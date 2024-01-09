@@ -24,7 +24,11 @@ export const registerSchema = z.object({
     .min(6, {
       message: "La contraseña debe tener al menos 6 caracteres",
     }),
-  isAdmin: z.boolean(),
+  isAdmin: z.boolean(
+    {
+      required_error: "Debe especificar si el usuario es administrador",
+    },
+  ),
 });
 
 export const loginSchema = z.object({
