@@ -33,7 +33,7 @@ const authRouter = Router();
  *               password:
  *                 type: string   
  *                 format: password
- *               is_admin:
+ *               isAdmin:
  *                 type: boolean
  *     responses:
  *       '200':
