@@ -14,8 +14,7 @@ const authRouter = Router();
  *     tags:
  *       - auth
  *     summary: Signup
- *     description: This is the signup endpoint for the app, returns a token in the cookie, and the user data in the body
- *     operationId: ctrlValue.addValue
+ *     description: This is the signup endpoint for the app, returns a token in the cookie
  *     requestBody:
  *       content:
  *         application/json:
@@ -36,8 +35,6 @@ const authRouter = Router();
  *                 format: password
  *               is_admin:
  *                 type: boolean
- *     produces:
- *       - application/json
  *     responses:
  *       '200':
  *         description: Add Value Response
@@ -52,16 +49,6 @@ const authRouter = Router();
  *                   type: string
  *                 email:
  *                   type: string
- *       '400':
- *         description: Bad Request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 err:
- *                   type: string
- *                   description: Message = Error message
  */
 authRouter.post("/register", validateSchema(registerSchema), authController.register);
 /**
@@ -85,8 +72,6 @@ authRouter.post("/register", validateSchema(registerSchema), authController.regi
  *               password:
  *                 type: string
  *                 format: password
- *     produces:
- *       - application/json
  *     responses:
  *       '200':
  *         description: Add Value Response
@@ -101,18 +86,26 @@ authRouter.post("/register", validateSchema(registerSchema), authController.regi
  *                   type: string
  *                 email:
  *                   type: string
- *       '400':
- *         description: Bad Request
+ */
+authRouter.post("/login", validateSchema(loginSchema), authController.login);
+/**
+ * @swagger
+ * /api/auth/logout:
+ *   post:
+ *     tags:
+ *       - auth
+ *     summary: Logout
+ *     description: Logout delete the cookie
+ *     responses:
+ *       '200':
  *         content:
  *           application/json:
  *             schema:
  *               type: object
  *               properties:
- *                 err:
+ *                 message:
  *                   type: string
- *                   description: Message = Error message
  */
-authRouter.post("/login", validateSchema(loginSchema), authController.login);
 authRouter.post("/logout", authController.logout);
 /**
  * @swagger
@@ -137,16 +130,6 @@ authRouter.post("/logout", authController.logout);
  *                   type: string
  *                 exams:
  *                   type: array
- *       '400':
- *         description: Bad Request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 err:
- *                   type: string
- *                   description: Error message
  */
 authRouter.get("/verify", authController.verify);
 /**
@@ -164,8 +147,6 @@ authRouter.get("/verify", authController.verify);
  *           type: string
  *     summary: Get Profile
  *     description: Get a user profile (non-admin) with the exams taken
- *     produces:
- *       - application/json
  *     responses:
  *       '200':
  *         description: Successful response
@@ -180,16 +161,6 @@ authRouter.get("/verify", authController.verify);
  *                   type: string
  *                 exams:
  *                   type: array
- *       '400':
- *         description: Bad Request
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 err:
- *                   type: string
- *                   description: Error message
  */
 
 authRouter.get("/profile/:id", authController.profile);

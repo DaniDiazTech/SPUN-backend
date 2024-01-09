@@ -5,8 +5,8 @@ const getRandomExam = async (req:Request, res:Response) => {
   try {
     console.log("getRandomExamController");
     console.log("subject: "+req.params.subject);
-    console.log("n: "+req.params.n);
-    const Exam = await getRandomExamService(req.query.subject.toString(), req.query.n.toString());
+    console.log("n: "+req.params.number);
+    const Exam = await getRandomExamService(req.query.subject.toString(), req.query.number.toString());
     res.json({
       exam: Exam,
     });

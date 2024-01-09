@@ -62,7 +62,7 @@ QuestionBlockRouter.get("/", QuestionBlockController.getQuestionBlocks);
  *     tags:
  *       - questionBlock
  *     summary: Get all questionBlocks or a specific one by ID
- *     description: |
+ *     description:
  *       This is the endpoint for getting a list of questionBlocks or a specific one by providing an ID.
  *       Each questionBlock contains a subject, questions, content, and timestamp information.
  *     parameters:
@@ -189,7 +189,7 @@ QuestionBlockRouter.get("/bySubject/:subject", QuestionBlockController.getQuesti
  *     tags:
  *       - questionBlock
  *     summary: Create a new questionBlock
- *     description: |
+ *     description:
  *       This is the endpoint for creating a new questionBlock. Values should be passed in the request body.
  *     requestBody:
  *       required: true
@@ -261,7 +261,7 @@ QuestionBlockRouter.post("/create", validateSchema(postQuestionBlockSchema), Que
  *     tags:
  *       - questionBlock
  *     summary: Update a questionBlock
- *     description: |
+ *     description:
  *       This is the endpoint for updating a questionBlock. Values should be passed in the request body.
  *     parameters:
  *       - in: path
@@ -339,7 +339,7 @@ QuestionBlockRouter.put("/:id", QuestionBlockController.updateQuestionBlock);
  *     tags:
  *       - questionBlock
  *     summary: Delete a questionBlock
- *     description: |
+ *     description:
  *       This is the endpoint for deleting a questionBlock.
  *     parameters:
  *       - in: path

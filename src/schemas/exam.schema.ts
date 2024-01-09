@@ -44,7 +44,7 @@ export const postExamTakeSchema = z.object({
     endExam: z.string({
         required_error: "La fecha de finalizacion es requerida",
     }),
-    score: z.number({
+    score: z.string({
         required_error: "El puntaje es requerido",
     }),
 });

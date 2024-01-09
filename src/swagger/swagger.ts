@@ -10,15 +10,11 @@ const url = 'http://localhost:4000';
 
 const swaggerDefinition = {
   info: {
-    contact: {
-      email: 'jmbl1685@hotmail.com',
-      name: 'Juan Batty',
-    },
-    description: 'Custom structure to build an REST API using Express.js',
+    description: 'This is the API documentation for the SPUN API',
     license: {
       name: 'All Rights Reserved',
     },
-    title: 'Custom structure to build an REST API using Express.js',
+    title: 'SPUN API',
   },
   openapi: '3.0.0',
   produces: ['application/json'],
@@ -32,25 +28,14 @@ const swaggerDefinition = {
   'x-tagGroups': [
     {
       name: 'General',
-      tags: ['auth','questionBlock','exam','user'],
+      tags: ['auth','questionBlock','exam'],
     },
   ],
-  components: {
-    securitySchemes: {
-      cookieAuth: {
-        description: 'Cookie authentication',
-        in: 'cookie',
-        name: 'token',
-        type: 'apiKey',
-      },
-    },
-  },
+
 };
 
 const route = ["./src/routes/**/*.ts"];
-
 const apis = route;
-
 const options = {
   apis,
   basePath: '/',
