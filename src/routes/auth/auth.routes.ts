@@ -109,7 +109,7 @@ authRouter.post("/login", validateSchema(loginSchema), authController.login);
 authRouter.post("/logout", authController.logout);
 /**
  * @swagger
- * /api/auth/verify
+ * /api/auth/verify:
  *   get:
  *     tags:
  *       - auth
