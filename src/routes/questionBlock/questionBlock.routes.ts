@@ -2,6 +2,7 @@ import { Router } from "express";
 import QuestionBlockController from "../../controllers/questionBlock.controller";
 import { postQuestionBlockSchema } from "../../schemas/questionBlock.schema";
 import { validateSchema } from "../../middlewares/validateSchema";
+import { isAdmin } from "../../middlewares/auth";
 const QuestionBlockRouter = Router();
 /**
  * @swagger
@@ -253,7 +254,7 @@ QuestionBlockRouter.get("/bySubject/:subject", QuestionBlockController.getQuesti
  *               __v:
  *                 type: integer
  */
-QuestionBlockRouter.post("/create", validateSchema(postQuestionBlockSchema), QuestionBlockController.postQuestionBlock);
+QuestionBlockRouter.post("/create", isAdmin, validateSchema(postQuestionBlockSchema), QuestionBlockController.postQuestionBlock);
 /**
  * @swagger
  * /api/questionBlock/{id}:
@@ -331,7 +332,7 @@ QuestionBlockRouter.post("/create", validateSchema(postQuestionBlockSchema), Que
  *                 __v:
  *                   type: integer
  */
-QuestionBlockRouter.put("/:id", QuestionBlockController.updateQuestionBlock);
+QuestionBlockRouter.put("/:id", isAdmin,QuestionBlockController.updateQuestionBlock);
 /**
  * @swagger
  * /api/questionBlock/{id}:
@@ -383,5 +384,5 @@ QuestionBlockRouter.put("/:id", QuestionBlockController.updateQuestionBlock);
  *                 __v:
  *                   type: integer
  */
-QuestionBlockRouter.delete("/:id", QuestionBlockController.deleteQuestionBlock);
+QuestionBlockRouter.delete("/:id", isAdmin,QuestionBlockController.deleteQuestionBlock);
 export default QuestionBlockRouter;
