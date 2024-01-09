@@ -29,6 +29,8 @@
     "nodemo": "^1.0.0",
     "nodemon": "^3.0.2",
     "save-dev": "^0.0.1-security",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.2",
     "zod": "^3.22.4"
