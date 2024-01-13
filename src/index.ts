@@ -10,46 +10,7 @@ import router_manager from "./routes/manager.routes";
 
 // Loads the environment variables from .env
 dotenv.config();
-/*
-const swaggerOptions = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "SPUN backend",
-      version: "1.0.0",
-      description: "This is the backend service of the SPUN app",
-    },
-    servers: [
-      {
-        url: "http://localhost:4000",
-      },
-    ],
-    tags: [
-      {
-        name: "auth",
-        description: "Authentication routes",
-      },
-      {
-        name: "questionBlock",
-        description: "Question block routes",
-      },
-      {
-        name: "question",
-        description: "Question routes",
-      },
-      {
-        name: "subject",
-        description: "Subject routes",
-      },
-      {
-        name: "user",
-        description: "User routes",
-      },
-    ],
-  },
-  apis: 
-}
-*/
+
 // Stores all the routes of the app
 const app = express();
 

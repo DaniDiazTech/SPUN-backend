@@ -13,6 +13,8 @@ export const loginService = async (user: UserLoginInterface) => {
   // Checks if the password matches
   if (!isMatch) throw new HTTPError(400, "Contraseña incorrecta");
   const token = await createAccessToken({ id: userFound._id });
+  if (!userFound.isVerified) throw new HTTPError(400, "El usuario no está verificado por favor revise su correo electrónico");
+
   return {
     token,
     id: userFound._id,
