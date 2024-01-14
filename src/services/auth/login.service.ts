@@ -20,5 +20,7 @@ export const loginService = async (user: UserLoginInterface) => {
     id: userFound._id,
     username: userFound.username,
     email: userFound.email,
+    isAdmin: userFound.isAdmin,
+    isVerified: userFound.isVerified
   } as AuthSuccessInterface;
 };
