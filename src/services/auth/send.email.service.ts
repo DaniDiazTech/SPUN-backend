@@ -12,7 +12,7 @@ export const sendEmailService = async (user_id: string, user_email:string) => {
   
   const mailOptions = {
     from: {
-      name: 'Administrador',
+      name: 'SPUN',
       address: process.env.EMAIL_USER,
       },
     to: user_email,
