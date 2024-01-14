@@ -3,6 +3,7 @@ import User from "../../models/users/user";
 import { HTTPError } from "../../utils/HTTPError";
 import bcrypt from "bcrypt";
 import createAccessToken from "../../utils/auth/accessToken";
+import { sendEmailService } from "./send.email.service";
 
 export const registerService = async (user: UserRegisterInterface) => {
   const userFoundByEmail = await User.findOne({ email: user.email });
@@ -19,7 +20,7 @@ export const registerService = async (user: UserRegisterInterface) => {
   });
   const savedUser = await newUser.save();
   const token = await createAccessToken({ id: savedUser._id });
-
+  await sendEmailService(savedUser._id.toString(), savedUser.email);
   return {
     token,
     id: savedUser._id,
