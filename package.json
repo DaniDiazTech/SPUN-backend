@@ -26,6 +26,7 @@
     "express-formidable": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.4",
+    "nodemailer": "^6.9.8",
     "nodemo": "^1.0.0",
     "nodemon": "^3.0.2",
     "save-dev": "^0.0.1-security",
