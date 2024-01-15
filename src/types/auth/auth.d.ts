@@ -34,4 +34,6 @@ export interface AuthSuccessInterface{
     id: mongoose.Types.ObjectId;
     username: string;
     email: string;
+    isAdmin: boolean;
+    isVerified: boolean;
 }

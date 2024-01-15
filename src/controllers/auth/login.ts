@@ -14,6 +14,8 @@ export const login = async (req: Request, res: Response) => {
       id: data.id,
       username: data.username,
       email: data.email,
+      isAdmin: data.isAdmin,
+      isVerified: data.isVerified
     });
   }catch (err) {
     if (err.status!==undefined) {

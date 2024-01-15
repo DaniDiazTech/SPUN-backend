@@ -26,5 +26,7 @@ export const registerService = async (user: UserRegisterInterface) => {
     id: savedUser._id,
     username: savedUser.username,
     email: savedUser.email,
+    isAdmin: savedUser.isAdmin,
+    isVerified: savedUser.isVerified
   } as AuthSuccessInterface;
 };
