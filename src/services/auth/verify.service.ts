@@ -7,7 +7,6 @@ import { DecodedTokenInterface } from "../../types/auth/auth";
 
 
 export const verifyService = async (token: string) => {
-  console.log(token);
   if (!token) throw new HTTPError(401, "No token, authorization denied here");
   const decoded = jwt.verify(
     token,

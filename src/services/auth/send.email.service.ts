@@ -2,6 +2,7 @@ import createAccessToken from "../../utils/auth/accessToken";
 import Token from "../../models/auth/token";
 import transporter from "../../utils/auth/mailer";
 import dotenv from "dotenv";
+dotenv.config();
 
 export const sendEmailService = async (user_id: string, user_email:string) => {
   const tokenEmail = await  createAccessToken({ email: user_id});
