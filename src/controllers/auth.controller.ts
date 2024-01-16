@@ -4,6 +4,7 @@ import { logout } from "./auth/logout";
 import { register } from "./auth/register";
 import { verify } from "./auth/verify";
 import { verifyEmail } from "./auth/verifyEmail";
+import {forgotPassword} from "./auth/forgotPassword";
 
 const authController = {
     login,
@@ -11,7 +12,8 @@ const authController = {
     register,
     verify,
     profile,
-    verifyEmail
+    verifyEmail,
+    forgotPassword
 };
 
 export default authController;

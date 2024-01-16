@@ -166,4 +166,8 @@ authRouter.get("/verify", authController.verify);
 authRouter.get("/profile/:id", authController.profile);
 
 authRouter.get("/verify-email/:token", authController.verifyEmail);
+
+authRouter.get("/forgot-password/:email", authController.forgotPassword);
+
+
 export default authRouter;
