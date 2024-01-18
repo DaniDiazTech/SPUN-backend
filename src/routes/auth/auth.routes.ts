@@ -4,6 +4,9 @@ import authController from "./../../controllers/auth.controller";
 import { loginSchema, registerSchema } from "../../schemas/auth.schema";
 import { validateSchema } from "../../middlewares/validateSchema";
 
+import { verifyToken } from "./../../middlewares/auth/verifyToken";
+
+
 const authRouter = Router();
 
 
@@ -163,12 +166,12 @@ authRouter.get("/verify", authController.verify);
  *                   type: array
  */
 
-authRouter.get("/profile/:id", authController.profile);
+authRouter.get("/profile/:id", verifyToken, authController.profile);
 
 authRouter.get("/verify-email/:token", authController.verifyEmail);
 
-authRouter.get("/forgot-password/:email", authController.forgotPassword);
-
+authRouter.get("/forgot-password/:email",authController.forgotPassword);
+ 
 authRouter.post("/forgot-password/new/:token", authController.postNewPassword);
 
 
