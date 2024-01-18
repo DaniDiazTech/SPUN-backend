@@ -169,5 +169,7 @@ authRouter.get("/verify-email/:token", authController.verifyEmail);
 
 authRouter.get("/forgot-password/:email", authController.forgotPassword);
 
+authRouter.post("/forgot-password/new/:token", authController.postNewPassword);
+
 
 export default authRouter;

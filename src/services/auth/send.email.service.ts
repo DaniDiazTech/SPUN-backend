@@ -19,12 +19,11 @@ export const sendEmailService = async (user_id: string, user_email:string, subje
     to: user_email,
     subject: subject,
 
-    html: content + `<a 
+    html: content + `<a
     style="color: #10B981;
     font: sans-serif;
     "
-    href="${process.env.FRONTEND_URL}/auth/verify-email/${tokenEmail}">Verificar correo electrónico</a>
-    }
+    href="${process.env.FRONTEND_URL}/auth/verify-email/${tokenEmail}">Haz click aquí.</a>
   `
   }
   

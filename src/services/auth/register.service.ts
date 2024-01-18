@@ -28,7 +28,7 @@ export const registerService = async (user: UserRegisterInterface) => {
 
   <p style="color: #000;
   font: sans-serif;
-  ">Gracias por registrarte en <span style="color: #10B981">SPUN</span>, para poder acceder a tu cuenta debes verificar tu correo electrónico.</p>`,);
+  ">Gracias por registrarte en <span style="color: #10B981">SPUN</span>, para poder acceder a tu cuenta debes verificar tu correo electrónico. Por favor haz click en el siguiente enlace.</p>`,);
   
   return {
     token,
