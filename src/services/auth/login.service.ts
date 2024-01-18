@@ -12,8 +12,10 @@ export const loginService = async (user: UserLoginInterface) => {
   const isMatch = await bcrypt.compare(user.password, userFound.password);
   // Checks if the password matches
   if (!isMatch) throw new HTTPError(400, "Contraseña incorrecta");
-  const token = await createAccessToken({ id: userFound._id });
+  // Checks if the user is verified
   if (!userFound.isVerified) throw new HTTPError(400, "El usuario no está verificado por favor revise su correo electrónico");
+
+  const token = await createAccessToken({ id: userFound._id });
 
   return {
     token,
