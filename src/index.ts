@@ -24,6 +24,7 @@ app.use(
 );
 app.use(cookieParser()); // For parsing cookies
 app.use(express.json()); // Converts req.body to json
+app.use(express.json({limit: '50mb'}));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(swaggerOptions)));
 app.use("/api", router_manager); // Sets the routes
 

@@ -1,9 +1,13 @@
-import  S3Client  from 'aws-sdk/clients/s3';
+const { S3Client } = require('@aws-sdk/client-s3')
+
+const region = process.env.AWS_BUCKET_REGION??"us-east-1";
+const key = process.env.AWS_PUBLIC_KEY??"";
+const secret = process.env.AWS_SECRET_KEY??"";
 
 export const s3Config = new S3Client({
-    region: process.env.AWS_BUCKET_REGION,
-    credentials: {
-        accessKeyId: process.env.AWS_PUBLIC_KEY,
-        secretAccessKey: process.env.AWS_SECRET_KEY,    
-    }
+  region,
+  credentials: {
+    accessKeyId: key,
+    secretAccessKey: secret,
+  },
 });

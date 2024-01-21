@@ -3,7 +3,7 @@ import multerS3 from 'multer-s3'
 
 import { s3Config } from '../../s3'
 
-const uploadImage = multer({
+export const uploadImage = multer({
     storage: multerS3({
       s3: s3Config,
       bucket: "spun-s3",
@@ -14,7 +14,4 @@ const uploadImage = multer({
     }),
 
 })
-
-export default uploadImage;
-
 
