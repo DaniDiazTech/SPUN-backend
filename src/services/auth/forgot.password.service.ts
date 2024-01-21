@@ -16,7 +16,7 @@ export const forgotPasswordService = async (user_email:string) => {
 
   <p style="color: #000;
   font: sans-serif;
-  ">Para reestablecer tu contraseñan en <span style="color: #10B981">SPUN</span>, por favor haz click en el siguiente enlace.</p>`);
+  ">Para reestablecer tu contraseña en <span style="color: #10B981">SPUN</span>, por favor haz click en el siguiente enlace.</p>`);
 
   return {
     message:"Se ha enviado un correo electrónico para restablecer la contraseña"
