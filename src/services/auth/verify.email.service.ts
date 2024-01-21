@@ -10,7 +10,5 @@ export const verifyEmailService = async (token_str: string) => {
     user.isVerified=true;
     await user.save();
     await token.deleteOne();
-    return {
-        message:"El usuario ha sido verificado"
-    };
+    return user._id;
 };
