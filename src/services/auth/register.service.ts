@@ -21,7 +21,11 @@ export const registerService = async (user: UserRegisterInterface) => {
   const savedUser = await newUser.save();
   const token = await createAccessToken({ id: savedUser._id });
 
-  await sendEmailService(savedUser._id.toString(), savedUser.email, "Verificar correo electrónico", `
+  await sendEmailService(
+    savedUser._id.toString(), 
+    savedUser.email, 
+    "verify-email",
+    "Verificar correo electrónico", `
   <h1 style="color: #000;
   font: sans-serif;
   ">Bienvenido a <span style="color: #10B981">SPUN</span></h1>

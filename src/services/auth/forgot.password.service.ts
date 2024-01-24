@@ -9,6 +9,7 @@ export const forgotPasswordService = async (user_email:string) => {
   await sendEmailService(
     user._id.toString(),
     user.email,
+    "new-password",
     "Restablecer contraseña",
     `<h1 style="color: #000;
   font: sans-serif;
