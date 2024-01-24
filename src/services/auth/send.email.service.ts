@@ -4,7 +4,7 @@ import transporter from "../../utils/auth/mailer";
 import dotenv from "dotenv";
 dotenv.config();
 
-export const sendEmailService = async (user_id: string, user_email:string, subject:string, content:string) => {
+export const sendEmailService = async (user_id: string, user_email:string, service:string, subject:string, content:string) => {
   const tokenEmail = await  createAccessToken({ email: user_id});
   const newToken = new Token({
     token: tokenEmail,
@@ -23,7 +23,7 @@ export const sendEmailService = async (user_id: string, user_email:string, subje
     style="color: #10B981;
     font: sans-serif;
     "
-    href="${process.env.FRONTEND_URL}/auth/verify-email/${tokenEmail}">Haz click aquí.</a>
+    href="${process.env.FRONTEND_URL}/auth/${service}/${tokenEmail}">Haz click aquí.</a>
   `
   }
   
