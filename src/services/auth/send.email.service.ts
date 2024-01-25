@@ -5,6 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const sendEmailService = async (user_id: string, user_email:string, service:string, subject:string, content:string) => {
+  //checks if there is a token for this user
+  const token = await Token.findOne({ user: user_id });
+  if (token) throw new Error("No se puede enviar otro correo electrónico");
   const tokenEmail = await  createAccessToken({ email: user_id});
   const newToken = new Token({
     token: tokenEmail,
