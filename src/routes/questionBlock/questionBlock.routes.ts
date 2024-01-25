@@ -3,6 +3,7 @@ import QuestionBlockController from "../../controllers/questionBlock.controller"
 import { postQuestionBlockSchema } from "../../schemas/questionBlock.schema";
 import { validateSchema } from "../../middlewares/validateSchema";
 import { isAdmin } from "../../middlewares/auth";
+import { uploadImage } from "../../services/questionBlock/postImageQuestionBlock";
 const QuestionBlockRouter = Router();
 /**
  * @swagger
@@ -79,7 +80,7 @@ QuestionBlockRouter.get("/", QuestionBlockController.getQuestionBlocks);
  *           application/json:
  *             schema:
  *               type: object
- *               properties: 
+ *               properties:
  *                questionBlock:
  *                  type: object
  *                  properties:
@@ -138,7 +139,7 @@ QuestionBlockRouter.get("/:id", QuestionBlockController.getQuestionBlock);
  *         name: subject
  *         schema:
  *           type: string
- *         description: subject 
+ *         description: subject
  *     responses:
  *       '200':
  *         description: Successful response
@@ -182,7 +183,10 @@ QuestionBlockRouter.get("/:id", QuestionBlockController.getQuestionBlock);
  *                       __v:
  *                         type: integer
  */
-QuestionBlockRouter.get("/bySubject/:subject", QuestionBlockController.getQuestionsBySubject);
+QuestionBlockRouter.get(
+  "/bySubject/:subject",
+  QuestionBlockController.getQuestionsBySubject,
+);
 /**
  * @swagger
  * /api/questionBlock/create:
@@ -254,7 +258,12 @@ QuestionBlockRouter.get("/bySubject/:subject", QuestionBlockController.getQuesti
  *               __v:
  *                 type: integer
  */
-QuestionBlockRouter.post("/create", isAdmin, validateSchema(postQuestionBlockSchema), QuestionBlockController.postQuestionBlock);
+QuestionBlockRouter.post(
+  "/create",
+  isAdmin,
+  uploadImage.single("image"),
+  QuestionBlockController.postQuestionBlock,
+);
 /**
  * @swagger
  * /api/questionBlock/{id}:
@@ -332,7 +341,11 @@ QuestionBlockRouter.post("/create", isAdmin, validateSchema(postQuestionBlockSch
  *                 __v:
  *                   type: integer
  */
-QuestionBlockRouter.put("/:id", isAdmin,QuestionBlockController.updateQuestionBlock);
+QuestionBlockRouter.put(
+  "/:id",
+  isAdmin,
+  QuestionBlockController.updateQuestionBlock,
+);
 /**
  * @swagger
  * /api/questionBlock/{id}:
@@ -384,5 +397,9 @@ QuestionBlockRouter.put("/:id", isAdmin,QuestionBlockController.updateQuestionBl
  *                 __v:
  *                   type: integer
  */
-QuestionBlockRouter.delete("/:id", isAdmin,QuestionBlockController.deleteQuestionBlock);
+QuestionBlockRouter.delete(
+  "/:id",
+  isAdmin,
+  QuestionBlockController.deleteQuestionBlock,
+);
 export default QuestionBlockRouter;
