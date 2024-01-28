@@ -2,9 +2,6 @@ import mongoose, { Document } from 'mongoose';
 
 // Database models interfaces
 export interface UserInterface extends Document {
-    firstName?: string;
-    firstName?: string;
-    lastName?: string;
     email: string;
     username: string;
     password: string;
@@ -12,8 +9,6 @@ export interface UserInterface extends Document {
   }
 
 export interface UserRegisterInterface{
-    firstName?: string;
-    lastName?: string;
     email: string;
     username: string;
     password: string;
